@@ -1,19 +1,14 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-int mark;
-
-do{
-	cout<<"Enter Grade: ";
-	cin>>mark; // users enters a single character
-	
-	if(mark > 49 && mark <= 100)
-	cout<<"You Passed.\n\n";
-	else if(mark >= 0 && mark <= 49)
-	cout<<"You Failed.\n\n";
+int main(){
+	char input;
+	cout<<"enter a character: ";
+	cin>>input;
+	if(input=='a'||input=='e'||input=='i'||input=='o'||input=='u')
+		cout<<"you have entered a vowel.\n\n";
+	else if(input>='a'&&input<='z')
+		cout<<"you have entered a consonant.\n\n";
 	else
-	cout<<"Wrong input. Please try again.\n\n";
-}
-while(mark < 0 || mark > 100 );
+		cout<<"invalid input.\n\n";
 }
