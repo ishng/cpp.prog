@@ -1,0 +1,246 @@
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
+#include <algorithm>
+#include <limits>
+
+using namespace std;
+
+/* FUNCTION PROTOTYPES */
+void biodata();
+void calculator();
+void ioprogram();
+void cmathProgram();
+void evenorodd();
+void gradingsystem();
+
+/* MAIN FUNCTION */
+int main() {
+    int choice;
+
+    while (true) {
+        cout << "=========== MAIN MENU ===========" << endl;
+        cout << "1. Biodata" << endl;
+        cout << "2. Calculator" << endl;
+        cout << "3. IO Program" << endl;
+        cout << "4. CMATH Program" << endl;
+        cout << "5. Even or Odd" << endl;
+        cout << "6. Grading System" << endl;
+        cout << "7. Exit" << endl;
+        cout << "Enter your choice: ";
+
+        if (!(cin >> choice)) {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            system("clear");
+            cout << "Invalid Input!" << endl;
+            continue;
+        }
+
+        system("clear");
+
+        switch (choice) {
+            case 1: biodata(); break;
+            case 2: calculator(); break;
+            case 3: ioprogram(); break;
+            case 4: cmathProgram(); break;
+            case 5: evenorodd(); break;
+            case 6: gradingsystem(); break;
+            case 7:
+                cout << "Exiting Program..." << endl;
+                return 0;
+            default:
+                cout << "Invalid choice!" << endl;
+        }
+    }
+}
+
+/* BIODATA */
+void biodata() {
+    cout << "=======BIODATA=======" << endl;
+    cout << "Name: \tOLORES DAVIES JORGE O." << endl;
+    cout << "Age: \t22 YEARS OLD" << endl;
+    cout << "Course:\tBACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY" << endl;
+    cout << "Hobbies:\tPLAYING BASKETBALL" << endl;
+    cout << "Motto:\tSTICK TO THE PLAN." << endl;
+
+    cout << endl << "Press Enter To Return";
+    cin.ignore();
+    cin.get();
+    system("clear");
+}
+
+/* CALCULATOR */
+void calculator() {
+    double firstnum, secondnum, result;
+    char operand;
+
+    while (true) {
+        cout << "-----CALCULATOR-----" << endl;
+        cout << "Enter First Number: ";
+        if (cin >> firstnum) break;
+
+        cin.clear();
+        cin.ignore(1000, '\n');
+        system("clear");
+        cout << "Invalid Input!" << endl;
+    }
+
+    system("clear");
+
+    while (true) {
+        cout << "Enter an Operator (+ - * /): ";
+        cin >> operand;
+        if (operand == '+' || operand == '-' || operand == '*' || operand == '/') break;
+
+        cin.clear();
+        cin.ignore(1000, '\n');
+        system("clear");
+        cout << "Invalid Operator!" << endl;
+    }
+
+    system("clear");
+
+    while (true) {
+        cout << "Enter Second Number: ";
+        if (cin >> secondnum && !(operand == '/' && secondnum == 0)) break;
+
+        cin.clear();
+        cin.ignore(1000, '\n');
+        system("clear");
+        cout << "Invalid or Division by Zero!" << endl;
+    }
+
+    switch (operand) {
+        case '+': result = firstnum + secondnum; break;
+        case '-': result = firstnum - secondnum; break;
+        case '*': result = firstnum * secondnum; break;
+        case '/': result = firstnum / secondnum; break;
+    }
+
+    system("clear");
+    cout << "-----RESULT-----" << endl;
+    cout << firstnum << " " << operand << " " << secondnum << " = " << result << endl;
+
+    cout << endl << "Press Enter To Return";
+    cin.ignore();
+    cin.get();
+    system("clear");
+}
+
+/* IO PROGRAM */
+void ioprogram() {
+    string name;
+    int age;
+
+    cin.ignore();
+    cout << "-----IO PROGRAM-----" << endl;
+    cout << "Enter Your Name: ";
+    getline(cin, name);
+
+    cout << "Enter Your Age: ";
+    cin >> age;
+
+    system("clear");
+    cout << "Hello " << name << "! You're " << age << " years old." << endl;
+
+    cout << endl << "Press Enter To Return";
+    cin.ignore();
+    cin.get();
+    system("clear");
+}
+
+/* CMATH PROGRAM */
+void cmathProgram() {
+    double num1, num2, num3;
+
+    cin.ignore();
+    cout << "-----CMATH PROGRAM-----" << endl;
+
+    cout << "Enter First Number: ";
+    cin >> num1;
+    cout << "Enter Second Number: ";
+    cin >> num2;
+    cout << "Enter Third Number: ";
+    cin >> num3;
+
+    system("clear");
+
+    cout << "--------GIVEN--------" << endl;
+    cout << num1 << ", " << num2 << ", " << num3 << endl;
+
+    cout << "-----SQUARE ROOTS-----" << endl;
+    cout << sqrt(num1) << ", " << sqrt(num2) << ", " << sqrt(num3) << endl;
+
+    cout << "----ROUNDED VALUES----" << endl;
+    cout << round(num1) << ", " << round(num2) << ", " << round(num3) << endl;
+
+    cout << "---NATURAL LOGARITHM--" << endl;
+    cout << log(num1) << ", " << log(num2) << ", " << log(num3) << endl;
+
+    cout << "MAX VALUE: " << max(num1, max(num2, num3)) << endl;
+    cout << "MIN VALUE: " << min(num1, min(num2, num3)) << endl;
+
+    cout << endl << "Press Enter To Return";
+    cin.ignore();
+    cin.get();
+    system("clear");
+}
+
+/* EVEN OR ODD */
+void evenorodd() {
+    int num;
+
+    while (true) {
+        cout << "-----EVEN OR ODD-----" << endl;
+        cout << "Enter a non-negative whole number: ";
+        if (cin >> num && num >= 0) break;
+
+        cin.clear();
+        cin.ignore(1000, '\n');
+        system("clear");
+        cout << "Invalid Input!" << endl;
+    }
+
+    system("clear");
+    cout << "-----RESULT-----" << endl;
+    cout << num << ((num % 2 == 0) ? " IS EVEN" : " IS ODD") << endl;
+
+    cout << endl << "Press Enter To Return";
+    cin.ignore();
+    cin.get();
+    system("clear");
+}
+
+/* GRADING SYSTEM */
+void gradingsystem() {
+    string subjects[4] = {"MATH", "GENSOC", "CCITCOM", "CCPROG"};
+    int grades[4];
+    int total = 0;
+    double average;
+
+    cout << "-------GRADING SYSTEM-------" << endl;
+
+    for (int i = 0; i < 4; i++) {
+        cout << "Enter grade for " << subjects[i] << ": ";
+        cin >> grades[i];
+        total += grades[i];
+    }
+
+    average = total / 4.0;
+
+    system("clear");
+    cout << "-----RESULTS-----" << endl;
+
+    for (int i = 0; i < 4; i++) {
+        cout << subjects[i] << ": " << grades[i] << endl;
+    }
+
+    cout << "Average: " << average << endl;
+    cout << "Status: " << (average >= 75 ? "PASSED" : "FAILED") << endl;
+
+    cout << endl << "Press Enter To Return";
+    cin.ignore();
+    cin.get();
+    system("clear");
+}
