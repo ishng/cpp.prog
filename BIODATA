@@ -1,190 +1,274 @@
 #include <iostream>
-#include <cstdlib>
 #include <cmath>
+#include <limits>
+#include <cstdlib>
 using namespace std;
 
-/* FUNCTION PROTOTYPES */
+// ===== FUNCTION DECLARATIONS =====
 void biodata();
 void calculator();
 void ioprogram();
-void cmath();
-void evenorodd();
-void gradingsystem();
+void cmathMenu();
+void evenOrOdd();
+void gradingSystem();
+void finalsProjectMenu(bool isMidterm);
 
-/* MAIN FUNCTION */
+// ===== FUNCTION DEFINITIONS =====
+
+void biodata() {
+    cout << "-----BIODATA-----" << endl;
+    cout << "Name:\t\tOlores Davies Jorge O." << endl;
+    cout << "Age:\t\t22 Years Old" << endl;
+    cout << "Course:\t\tBachelor of Science in Information and Technology" << endl;
+    cout << "Hobbies:\tBasketball" << endl;
+    cout << "Motto:\t\t\"kung kaya  ng iba, pagawa mo sakanila.\"" << endl;
+    cout << endl << "Press Enter To Return";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+    cin.get();
+    system("clear");
+}
+
+void calculator() {
+    double num1, num2;
+    char op;
+
+    system("clear");
+    cout << "-----CALCULATOR-----" << endl;
+    cout << "Enter first number: ";
+    cin >> num1;
+    cout << "Enter operator (+,-,*,/): ";
+    cin >> op;
+    cout << "Enter second number: ";
+    cin >> num2;
+
+    double result;
+    switch (op) {
+        case '+': result = num1 + num2; break;
+        case '-': result = num1 - num2; break;
+        case '*': result = num1 * num2; break;
+        case '/': 
+            if (num2 != 0) result = num1 / num2; 
+            else { 
+                cout << "Cannot divide by zero!" << endl; 
+                cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+                cin.get();
+                return;
+            }
+            break;
+        default:
+            cout << "Invalid operator!" << endl;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+            cin.get();
+            return;
+    }
+
+    cout << "Result: " << result << endl;
+    cout << "Press Enter To Return";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+    cin.get();
+    system("clear");
+}
+
+void ioprogram() {
+    string name;
+    int age;
+
+    system("clear");
+    cout << "-----I/O PROGRAM-----" << endl;
+    cout << "Enter your name: ";
+    cin.ignore();
+    getline(cin, name);
+    cout << "Enter your age: ";
+    cin >> age;
+
+    cout << "\nHello, " << name << "! You are " << age << " years old." << endl;
+    cout << "Press Enter To Return";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+    cin.get();
+    system("clear");
+}
+
+void cmathMenu() {
+    int choice;
+    double num;
+
+    while (true) {
+        system("clear");
+        cout << "-----CMATH FUNCTIONS-----" << endl;
+        cout << "1. Sine (sin)" << endl;
+        cout << "2. Cosine (cos)" << endl;
+        cout << "3. Square Root (sqrt)" << endl;
+        cout << "4. Power (pow)" << endl;
+        cout << "5. Back" << endl;
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        if (choice == 5) break;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter number in radians: ";
+                cin >> num;
+                cout << "sin(" << num << ") = " << sin(num) << endl;
+                break;
+            case 2:
+                cout << "Enter number in radians: ";
+                cin >> num;
+                cout << "cos(" << num << ") = " << cos(num) << endl;
+                break;
+            case 3:
+                cout << "Enter number: ";
+                cin >> num;
+                if (num >= 0)
+                    cout << "sqrt(" << num << ") = " << sqrt(num) << endl;
+                else
+                    cout << "Cannot take square root of negative number!" << endl;
+                break;
+            case 4:
+                double base, exp;
+                cout << "Enter base: ";
+                cin >> base;
+                cout << "Enter exponent: ";
+                cin >> exp;
+                cout << base << "^" << exp << " = " << pow(base, exp) << endl;
+                break;
+            default:
+                cout << "Invalid choice!" << endl;
+                break;
+        }
+        cout << "Press Enter To Continue";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+        cin.get();
+    }
+    system("clear");
+}
+
+void evenOrOdd() {
+    int num;
+    system("clear");
+    cout << "-----EVEN OR ODD-----" << endl;
+    cout << "Enter a number: ";
+    cin >> num;
+
+    if (num % 2 == 0)
+        cout << num << " is Even." << endl;
+    else
+        cout << num << " is Odd." << endl;
+
+    cout << "Press Enter To Return";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+    cin.get();
+    system("clear");
+}
+
+void gradingSystem() {
+    int score;
+    system("clear");
+    cout << "-----GRADING SYSTEM-----" << endl;
+    cout << "Enter score (0-100): ";
+    cin >> score;
+
+    if (score >= 90) cout << "Grade: A" << endl;
+    else if (score >= 80) cout << "Grade: B" << endl;
+    else if (score >= 70) cout << "Grade: C" << endl;
+    else if (score >= 60) cout << "Grade: D" << endl;
+    else cout << "Grade: F" << endl;
+
+    cout << "Press Enter To Return";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+    cin.get();
+    system("clear");
+}
+
+// ===== FINALS PROJECT MENU =====
+void finalsProjectMenu(bool isMidterm) {
+    int numChoice;
+    bool loop = true;
+
+    while (loop) {
+        system("clear");
+        if (isMidterm) {
+            cout << "==================" << endl;
+            cout << "MIDTERM ACTIVITIES" << endl;
+            cout << "1. BIODATA" << endl;
+            cout << "2. CALCULATOR" << endl;
+            cout << "3. IO PROGRAM" << endl;
+            cout << "4. BACK" << endl;
+            cout << "==================" << endl;
+            cout << "ENTER A CHOICE: ";
+            cin >> numChoice;
+
+            switch (numChoice) {
+                case 1: biodata(); break;
+                case 2: calculator(); break;
+                case 3: ioprogram(); break;
+                case 4: loop = false; break;
+                default: 
+                    cout << "INVALID" << endl; 
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+                    cin.get();
+                    break;
+            }
+        } else { // FINALS
+            cout << "=================" << endl;
+            cout << "FINALS ACTIVITIES" << endl;
+            cout << "1. CMATH" << endl;
+            cout << "2. EVEN OR ODD" << endl;
+            cout << "3. GRADING SYSTEM" << endl;
+            cout << "4. CALCULATOR" << endl;
+            cout << "5. BACK" << endl;
+            cout << "=================" << endl;
+            cout << "ENTER A CHOICE: ";
+            cin >> numChoice;
+
+            switch (numChoice) {
+                case 1: cmathMenu(); break;
+                case 2: evenOrOdd(); break;
+                case 3: gradingSystem(); break;
+                case 4: calculator(); break;
+                case 5: loop = false; break;
+                default: 
+                    cout << "INVALID" << endl; 
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+                    cin.get();
+                    break;
+            }
+        }
+    }
+}
+
+// ===== MAIN MENU =====
 int main() {
     int choice;
 
     while (true) {
-        cout << "=========== MAIN MENU ===========" << endl;
-        cout << "1. Biodata" << endl;
-        cout << "2. Calculator" << endl;
-        cout << "3. IO Program" << endl;
-        cout << "4. CMATH Program" << endl;
-        cout << "5. Even or Odd" << endl;
-        cout << "6. Grading System (Midterm & Final)" << endl;
-        cout << "7. Exit" << endl;
-        cout << "Enter your choice: ";
-        if (!(cin >> choice)) {
-            cin.clear();
-            cin.ignore(1000, '\n');
-            system("clear");
-            cout << "Invalid Input!" << endl;
-            continue;
-        }
-
         system("clear");
+        cout << "===================================" << endl;
+        cout << "        MAIN ACTIVITIES MENU        " << endl;
+        cout << "===================================" << endl;
+        cout << "= 1. MIDTERM ACTIVITIES            =" << endl;
+        cout << "= 2. FINALS ACTIVITIES             =" << endl;
+        cout << "= 3. EXIT                          =" << endl;
+        cout << "===================================" << endl;
+        cout << "Enter Your Choice: ";
+        cin >> choice;
 
-        switch (choice) {
-            case 1: biodata(); break;
-            case 2: calculator(); break;
-            case 3: ioprogram(); break;
-            case 4: cmath(); break;
-            case 5: evenorodd(); break;
-            case 6: gradingsystem(); break;
-            case 7: return 0;
-            default: cout << "Invalid choice!" << endl;
+        if (choice == 1) {
+            finalsProjectMenu(true); // MIDTERM
+        }
+        else if (choice == 2) {
+            finalsProjectMenu(false); // FINALS
+        }
+        else if (choice == 3) {
+            cout << "Exiting program..." << endl;
+            break;
+        }
+        else {
+            cout << "INVALID CHOICE" << endl;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin.get();
         }
     }
+
+    return 0;
 }
-
-/* BIODATA */
-void biodata() {
-    cout << "-----BIODATA-----" << endl;
-    cout << "Name:\t\tOlores, Davies Jorge O." << endl;
-    cout << "Age:\t\t22 Years Old" << endl;
-    cout << "Course:\t\tBachelor of Science in Information and Technology" << endl;
-    cout << "Hobbies:\tBasketball" << endl;
-    cout << "Motto:\t\t\"Pag kaya ng iba, pake ko.\"" << endl;
-
-    cout << endl << "Press Enter To Return";
-    cin.ignore();
-    cin.get();
-    system("clear");
-}
-
-/* CALCULATOR */
-void calculator() {
-    double firstnum,secondnum,result;
-    char operand;
-
-    while (true) {
-        cout << "-----CALCULATOR-----" << endl;
-        cout << "Enter First Number: ";
-        if (cin >> firstnum) break;
-        system("clear");
-        cout << "Invalid!" << endl;
-        cin.clear();
-        cin.ignore(1000, '\n');
-    }
-
-    system("clear");
-
-    while (true) {
-        cout << "Enter an Operator (+ - * /): ";
-        cin >> operand;
-        if(operand == '+' || operand == '-' || operand == '*' || operand == '/') break;
-        system("clear");
-        cout << "Invalid Operator!" << endl;
-        cin.clear();
-        cin.ignore(1000, '\n');
-    }
-
-    system("clear");
-
-    while (true) {
-        cout << "Enter Second Number: ";
-        if (cin >> secondnum && !(operand == '/' && secondnum == 0)) break;
-        system("clear");
-        cout << "Invalid or division by zero!" << endl;
-        cin.clear();
-        cin.ignore(1000, '\n');
-    }
-
-    switch (operand) {
-        case '+': result = firstnum + secondnum; break;
-        case '-': result = firstnum - secondnum; break;
-        case '*': result = firstnum * secondnum; break;
-        case '/': result = firstnum / secondnum; break;
-    }
-
-    system("clear");
-    cout << "-----RESULT-----"<< endl;
-    cout << firstnum << " " << operand << " " << secondnum << " = " << result << endl;
-
-    cout << endl << "Press Enter To Return";
-    cin.ignore();
-    cin.get();
-    system("clear");
-}
-
-/* IO PROGRAM */
-void ioprogram() {
-    int age;
-    string name;
-
-    cout << "-----IO PROGRAM-----" << endl;
-    cin.ignore();
-    cout << "Enter Your Name: ";
-    getline(cin, name);
-    cout << "Enter Your Age: ";
-    cin >> age;
-
-    system("clear");
-    cout << "Hello " << name << "! You're " << age << " Years Old amiright?" << endl;
-
-    cout << endl << "Press Enter To Return";
-    cin.ignore();
-    cin.get();
-    system("clear");
-}
-
-/* CMATH */
-void cmath() {
-    double num1,num2,num3;
-    cout << "-----CMATH-----" << endl;
-    cin.ignore();
-    cout << "Enter First Number: ";
-    cin >> num1;
-    cout << "Enter Second Number: ";
-    cin >> num2;
-    cout << "Enter Third Number: ";
-    cin >> num3;
-
-    system("clear");
-    cout << "--------GIVEN---------" << endl;
-    cout << "1. " << num1 << endl;
-    cout << "2. " << num2 << endl;
-    cout << "3. " << num3 << endl;
-
-    cout << "-----SQUARE ROOTS-----" << endl;
-    cout << "1. " << sqrt(num1) << endl;
-    cout << "2. " << sqrt(num2) << endl;
-    cout << "3. " << sqrt(num3) << endl;
-
-    cout << "----ROUNDED VALUES----" << endl;
-    cout << "1. " << round(num1) << endl;
-    cout << "2. " << round(num2) << endl;
-    cout << "3. " << round(num3) << endl;
-
-    cout << "---NATURAL LOGARITHM--" << endl;
-    cout << "1. " << log(num1) << endl;
-    cout << "2. " << log(num2) << endl;
-    cout << "3. " << log(num3) << endl;
-
-    double maxNum = max(num1,max(num2,num3));
-    double minNum = min(num1,min(num2,num3));
-
-    cout << "MAXIMUM VALUE: " << maxNum << endl;
-    cout << "MINIMUM VALUE: " << minNum << endl;
-
-    cout << endl << "Press Enter To Return";
-    cin.ignore();
-    cin.get();
-    system("clear");
-}
-
-/* EVEN OR ODD */
-void evenorodd() {
-    int num;
-    while (true
