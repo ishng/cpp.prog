@@ -1,16 +1,13 @@
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
-#include <algorithm>
-#include <limits>
-
 using namespace std;
 
 /* FUNCTION PROTOTYPES */
 void biodata();
 void calculator();
 void ioprogram();
-void cmathProgram();
+void cmath();
 void evenorodd();
 void gradingsystem();
 
@@ -25,10 +22,9 @@ int main() {
         cout << "3. IO Program" << endl;
         cout << "4. CMATH Program" << endl;
         cout << "5. Even or Odd" << endl;
-        cout << "6. Grading System" << endl;
+        cout << "6. Grading System (Midterm & Final)" << endl;
         cout << "7. Exit" << endl;
         cout << "Enter your choice: ";
-
         if (!(cin >> choice)) {
             cin.clear();
             cin.ignore(1000, '\n');
@@ -43,26 +39,23 @@ int main() {
             case 1: biodata(); break;
             case 2: calculator(); break;
             case 3: ioprogram(); break;
-            case 4: cmathProgram(); break;
+            case 4: cmath(); break;
             case 5: evenorodd(); break;
             case 6: gradingsystem(); break;
-            case 7:
-                cout << "Exiting Program..." << endl;
-                return 0;
-            default:
-                cout << "Invalid choice!" << endl;
+            case 7: return 0;
+            default: cout << "Invalid choice!" << endl;
         }
     }
 }
 
 /* BIODATA */
 void biodata() {
-    cout << "=======BIODATA=======" << endl;
-    cout << "Name: \tOLORES DAVIES JORGE O." << endl;
-    cout << "Age: \t22 YEARS OLD" << endl;
-    cout << "Course:\tBACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY" << endl;
-    cout << "Hobbies:\tPLAYING BASKETBALL" << endl;
-    cout << "Motto:\tSTICK TO THE PLAN." << endl;
+    cout << "-----BIODATA-----" << endl;
+    cout << "Name:\t\tOlores, Davies Jorge O." << endl;
+    cout << "Age:\t\t22 Years Old" << endl;
+    cout << "Course:\t\tBachelor of Science in Information and Technology" << endl;
+    cout << "Hobbies:\tBasketball" << endl;
+    cout << "Motto:\t\t\"Pag kaya ng iba, pake ko.\"" << endl;
 
     cout << endl << "Press Enter To Return";
     cin.ignore();
@@ -72,18 +65,17 @@ void biodata() {
 
 /* CALCULATOR */
 void calculator() {
-    double firstnum, secondnum, result;
+    double firstnum,secondnum,result;
     char operand;
 
     while (true) {
         cout << "-----CALCULATOR-----" << endl;
         cout << "Enter First Number: ";
         if (cin >> firstnum) break;
-
+        system("clear");
+        cout << "Invalid!" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
-        system("clear");
-        cout << "Invalid Input!" << endl;
     }
 
     system("clear");
@@ -91,12 +83,11 @@ void calculator() {
     while (true) {
         cout << "Enter an Operator (+ - * /): ";
         cin >> operand;
-        if (operand == '+' || operand == '-' || operand == '*' || operand == '/') break;
-
-        cin.clear();
-        cin.ignore(1000, '\n');
+        if(operand == '+' || operand == '-' || operand == '*' || operand == '/') break;
         system("clear");
         cout << "Invalid Operator!" << endl;
+        cin.clear();
+        cin.ignore(1000, '\n');
     }
 
     system("clear");
@@ -104,11 +95,10 @@ void calculator() {
     while (true) {
         cout << "Enter Second Number: ";
         if (cin >> secondnum && !(operand == '/' && secondnum == 0)) break;
-
+        system("clear");
+        cout << "Invalid or division by zero!" << endl;
         cin.clear();
         cin.ignore(1000, '\n');
-        system("clear");
-        cout << "Invalid or Division by Zero!" << endl;
     }
 
     switch (operand) {
@@ -119,7 +109,7 @@ void calculator() {
     }
 
     system("clear");
-    cout << "-----RESULT-----" << endl;
+    cout << "-----RESULT-----"<< endl;
     cout << firstnum << " " << operand << " " << secondnum << " = " << result << endl;
 
     cout << endl << "Press Enter To Return";
@@ -130,19 +120,18 @@ void calculator() {
 
 /* IO PROGRAM */
 void ioprogram() {
-    string name;
     int age;
+    string name;
 
-    cin.ignore();
     cout << "-----IO PROGRAM-----" << endl;
+    cin.ignore();
     cout << "Enter Your Name: ";
     getline(cin, name);
-
     cout << "Enter Your Age: ";
     cin >> age;
 
     system("clear");
-    cout << "Hello " << name << "! You're " << age << " years old." << endl;
+    cout << "Hello " << name << "! You're " << age << " Years Old amiright?" << endl;
 
     cout << endl << "Press Enter To Return";
     cin.ignore();
@@ -150,13 +139,11 @@ void ioprogram() {
     system("clear");
 }
 
-/* CMATH PROGRAM */
-void cmathProgram() {
-    double num1, num2, num3;
-
+/* CMATH */
+void cmath() {
+    double num1,num2,num3;
+    cout << "-----CMATH-----" << endl;
     cin.ignore();
-    cout << "-----CMATH PROGRAM-----" << endl;
-
     cout << "Enter First Number: ";
     cin >> num1;
     cout << "Enter Second Number: ";
@@ -165,21 +152,31 @@ void cmathProgram() {
     cin >> num3;
 
     system("clear");
-
-    cout << "--------GIVEN--------" << endl;
-    cout << num1 << ", " << num2 << ", " << num3 << endl;
+    cout << "--------GIVEN---------" << endl;
+    cout << "1. " << num1 << endl;
+    cout << "2. " << num2 << endl;
+    cout << "3. " << num3 << endl;
 
     cout << "-----SQUARE ROOTS-----" << endl;
-    cout << sqrt(num1) << ", " << sqrt(num2) << ", " << sqrt(num3) << endl;
+    cout << "1. " << sqrt(num1) << endl;
+    cout << "2. " << sqrt(num2) << endl;
+    cout << "3. " << sqrt(num3) << endl;
 
     cout << "----ROUNDED VALUES----" << endl;
-    cout << round(num1) << ", " << round(num2) << ", " << round(num3) << endl;
+    cout << "1. " << round(num1) << endl;
+    cout << "2. " << round(num2) << endl;
+    cout << "3. " << round(num3) << endl;
 
     cout << "---NATURAL LOGARITHM--" << endl;
-    cout << log(num1) << ", " << log(num2) << ", " << log(num3) << endl;
+    cout << "1. " << log(num1) << endl;
+    cout << "2. " << log(num2) << endl;
+    cout << "3. " << log(num3) << endl;
 
-    cout << "MAX VALUE: " << max(num1, max(num2, num3)) << endl;
-    cout << "MIN VALUE: " << min(num1, min(num2, num3)) << endl;
+    double maxNum = max(num1,max(num2,num3));
+    double minNum = min(num1,min(num2,num3));
+
+    cout << "MAXIMUM VALUE: " << maxNum << endl;
+    cout << "MINIMUM VALUE: " << minNum << endl;
 
     cout << endl << "Press Enter To Return";
     cin.ignore();
@@ -190,57 +187,4 @@ void cmathProgram() {
 /* EVEN OR ODD */
 void evenorodd() {
     int num;
-
-    while (true) {
-        cout << "-----EVEN OR ODD-----" << endl;
-        cout << "Enter a non-negative whole number: ";
-        if (cin >> num && num >= 0) break;
-
-        cin.clear();
-        cin.ignore(1000, '\n');
-        system("clear");
-        cout << "Invalid Input!" << endl;
-    }
-
-    system("clear");
-    cout << "-----RESULT-----" << endl;
-    cout << num << ((num % 2 == 0) ? " IS EVEN" : " IS ODD") << endl;
-
-    cout << endl << "Press Enter To Return";
-    cin.ignore();
-    cin.get();
-    system("clear");
-}
-
-/* GRADING SYSTEM */
-void gradingsystem() {
-    string subjects[4] = {"MATH", "GENSOC", "CCITCOM", "CCPROG"};
-    int grades[4];
-    int total = 0;
-    double average;
-
-    cout << "-------GRADING SYSTEM-------" << endl;
-
-    for (int i = 0; i < 4; i++) {
-        cout << "Enter grade for " << subjects[i] << ": ";
-        cin >> grades[i];
-        total += grades[i];
-    }
-
-    average = total / 4.0;
-
-    system("clear");
-    cout << "-----RESULTS-----" << endl;
-
-    for (int i = 0; i < 4; i++) {
-        cout << subjects[i] << ": " << grades[i] << endl;
-    }
-
-    cout << "Average: " << average << endl;
-    cout << "Status: " << (average >= 75 ? "PASSED" : "FAILED") << endl;
-
-    cout << endl << "Press Enter To Return";
-    cin.ignore();
-    cin.get();
-    system("clear");
-}
+    while (true
